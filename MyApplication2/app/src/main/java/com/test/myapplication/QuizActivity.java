@@ -38,12 +38,12 @@ public class QuizActivity extends AppCompatActivity {
     private int num1;
     private int num2;
 
-    private int max = 9;
-    private int min = 0;
 
     private Intent intent;
 
     int i=0;
+
+    int[] a;
 
 
 
@@ -55,7 +55,7 @@ public class QuizActivity extends AppCompatActivity {
 
         intent = getIntent();
 
-
+        Log.i(TAG, "onCreate: received intent = "+intent.getStringExtra("key_sub"));
 
         tvCurrentQno = (TextView) findViewById(R.id.current_quest_no);
         tvNum1 = (TextView) findViewById(R.id.number_1);
@@ -65,62 +65,50 @@ public class QuizActivity extends AppCompatActivity {
         keypadNext = (Button) findViewById(R.id.keypad_next);
 
 
-
-
-
-
-//        if(intent.getStringExtra(getString(R.string.key_sub)).equals("sub")) {
-
         if(intent.getStringExtra("key_sub").equals("sub")) {
             tvOperation.setText("-");
 
+//            for(int i=0;i<totalQuesCount;i++) {
 
-            for (i=0;i<totalQuesCount;i++) {
+//                String curr = String.valueOf(i+1);
+//                tvCurrentQno.setText(curr);
 
-                String currentQ = String.valueOf(i+1);
-                tvCurrentQno.setText(currentQ);
+                a = setQuestionView();
 
+            keypadNext.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 
+                    Log.i(TAG, "onClick: clicked ");
 
+                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] - a[1]))) {
+                        Toast.makeText(QuizActivity.this, "Correct Answer !", Toast.LENGTH_SHORT).show();
+                        score++;
+                        Intent intent = new Intent(QuizActivity.this,QuizActivity.class);
+                        intent.putExtra("key_sub","sub");
+                        startActivity(intent);
 
-//                tvCurrentQno.setText(String.valueOf(i+1));
-
-                num1 = (int) (Math.random() * (max - min) + min);
-                num2 = (int) (Math.random() * (max - num1) + min);
-
-                String sNum1 = String.valueOf(num1);
-                String sNum2 = String.valueOf(num2);
-
-
-                tvNum1.setText(sNum1);
-                tvNum2.setText(sNum2);
-
-                keypadNext.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                        if (etUserInput.getEditableText().toString().equals(Integer.toString(num1 - num2))) {
-                            Toast.makeText(QuizActivity.this, "Correct Answer !", Toast.LENGTH_SHORT).show();
-                            score++;
-
-                        } else {
-                            Toast.makeText(QuizActivity.this, "Incorrect Answer !", Toast.LENGTH_SHORT).show();
-                        }
+                    } else {
+                        Toast.makeText(QuizActivity.this, "Incorrect Answer !", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(QuizActivity.this,QuizActivity.class);
+                        intent.putExtra("key_sub","sub");
+                        startActivity(intent);
 
                     }
-                });
 
-            }
+                }
+            });
+//        }
 
             Log.i(TAG, "onCreate: i= "+i);
 
 
-            Toast.makeText(QuizActivity.this,"Your Final Score is = "+score,Toast.LENGTH_LONG).show();
+//            Toast.makeText(QuizActivity.this,"Your Final Score is = "+score,Toast.LENGTH_LONG).show();
             score = 0;
 
 
 
-            finish();
+
 
 
 
@@ -141,19 +129,43 @@ public class QuizActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    public int[] setQuestionView() {
+
+        int max = 9;
+        int min = 0;
+
+        num2 = (int) (Math.random() * (max - min) + min ); // num1>num2
+        num1 = (int) (Math.random() * (max - num2) + num2 );
+
+        int[] a={num1,num2};
+
+        Log.i(TAG, "setQuestionView: num1 = "+num1);
+        Log.i(TAG, "setQuestionView: num2 = "+num2);
 
 
 
+        String sNum1 = String.valueOf(num1);
+        String sNum2 = String.valueOf(num2);
+
+        Log.i(TAG, "setQuestionView: snum1 = "+sNum1);
+        Log.i(TAG, "setQuestionView: snum2 = "+sNum2);
+
+        tvNum1.setText(sNum1);
+        tvNum2.setText(sNum2);
+
+        return a;
 
 
 
-
-
-
-
-
-
-
+//        if (operation.equals("sub")) {
+//            tvOperation.setText("-");
+//        } else if (operation.equals("add")) {
+//            tvOperation.setText("+");
+//        } else if (operation.equals("mul")) {
+//            tvOperation.setText("X");
+//        }
 
     }
 }
