@@ -1,5 +1,6 @@
 package com.test.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,7 +25,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
+                Intent addIntent = new Intent(MainActivity.this, QuizActivity.class);
+                addIntent.putExtra(getString(R.string.Key_add), "add");
+                startActivity(addIntent);
 
             }
         });
@@ -33,12 +36,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                Intent subIntent = new Intent(MainActivity.this, QuizActivity.class);
+//                subIntent.putExtra(getString(R.string.key_sub),"sub");
+                subIntent.putExtra("key_sub","sub");
+                startActivity(subIntent);
+
             }
         });
 
         multpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Intent mulIntent = new Intent(MainActivity.this,QuizActivity.class);
+                mulIntent.putExtra(getString(R.string.key_mul),"mul");
+                startActivity(mulIntent);
 
             }
         });

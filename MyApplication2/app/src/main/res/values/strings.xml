@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">MathQuiz</string>
     <string name="addition_button">Addition</string>
     <string name="subtraction_button">Subtraction</string>
     <string name="production_button">Production</string>
@@ -7,4 +7,11 @@
     <string name="question_number">1</string>
     <string name="question">Question</string>
     <string name="result">10</string>
+    <string name="Key_add">key_add</string>
+    <string name="key_sub">key_sub</string>
+    <string name="key_mul">key_mul</string>
+
+    <string name="simple_ime">Simple IME</string>
+    <string name="subtype_en_US">English (US)</string>
+
 </resources>
