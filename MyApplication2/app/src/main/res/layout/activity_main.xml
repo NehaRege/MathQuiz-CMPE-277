@@ -12,34 +12,39 @@
 
     <Button
         android:id="@+id/add_button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/addition_button"
+        android:layout_margin="20dp"
 
         />
 
     <Button
         android:id="@+id/sub_button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/subtraction_button"
+        android:layout_margin="20dp"
+
         />
 
     <Button
         android:id="@+id/multp_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/production_button"
-        />
-
-    <android.inputmethodservice.KeyboardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/keyboard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:keyPreviewLayout ="@layout/preview"
+        android:text="@string/production_button"
+        android:layout_margin="20dp"
+
         />
+
+    <!--<android.inputmethodservice.KeyboardView-->
+        <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--android:id="@+id/keyboard"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:keyPreviewLayout ="@layout/preview"-->
+        <!--/>-->
 
 
 

@@ -14,23 +14,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 /**
- * Created by NehaRege on 10/7/16.
+ * Created by NehaRege on 10/9/16.
  */
-public class QuizActivity extends AppCompatActivity implements View.OnClickListener {
+public class MulQuizActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView tvCurrentQno;
-    private TextView tvNum1;
-    private TextView tvNum2;
-    private TextView tvOperation;
-
-    private EditText etUserInput;
-
-    private String quizOp;
-    private String addOp;
-    private String subOp;
-    private String mulOp;
 
     private Button keypadNext;
+    private Button keypadClear;
     private Button key1;
     private Button key2;
     private Button key3;
@@ -42,23 +32,23 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     private Button key9;
     private Button key0;
 
+    private TextView tvCurrentQno;
+    private TextView tvNum1;
+    private TextView tvNum2;
+    private TextView tvOperation;
+
+    private EditText etUserInput;
 
     private int currentQuesCounter=0;
     private int score = 0;
     private int totalQuesCount = 10;
 
-    String TAG = "QuizActivity.class";
-
     private int num1;
     private int num2;
 
-
-    private Intent intent;
-
-    int i=0;
-
     int[] a;
 
+    private String TAG = "AddQuizActivity";
 
 
     @Override
@@ -67,153 +57,83 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
         setContentView(R.layout.activity_quiz);
 
-        intent = getIntent();
-
-        Log.i(TAG, "onCreate: received intent = "+intent.getStringExtra("key_sub"));
+        Intent intent = getIntent();
 
         setViews();
 
-        if(intent.getStringExtra("key_sub").equals("sub")) {
-            tvOperation.setText("-");
 
-//            for(int i=0;i<totalQuesCount;i++) {
-//
-//                String curr = String.valueOf(i+1);
-//                tvCurrentQno.setText(curr);
+        tvOperation.setText("X");
 
-            currentQuesCounter++;
-            a = setQuestionView(currentQuesCounter);
-            tvCurrentQno.setText(String.valueOf("0"));
+        currentQuesCounter++;
+        a = setQuestionView(currentQuesCounter);
+        tvCurrentQno.setText(String.valueOf("0"));
 
 
 
-//            intent.getStringExtra("current_quest_count");
+        keypadNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-//            tvCurrentQno.setText(intent.getStringExtra("current_quest_count"));
-
-//            tvCurrentQno.setText(currentQuesCounter);
-
-
-
-            if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] - a[1]))) {
-//                Toast.makeText(QuizActivity.this, "Correct!", Toast.LENGTH_SHORT).show();
+                if (currentQuesCounter < totalQuesCount) {
 
 
-                Log.i(TAG, "onCreate: inside if statement of self check");
+                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] * a[1]))) {
+                        etUserInput.getText().clear();
 
+                        Log.i(TAG, "onClick: user input = " + etUserInput.getEditableText());
 
-                etUserInput.getText().clear();
+                        Log.i(TAG, "onClick: a0 * a1 = " + (a[0] * a[1]));
 
+                        Log.i(TAG, "onClick: a[0] = " + a[0]);
+                        Log.i(TAG, "onClick: a[1] = " + a[1]);
+                        Toast.makeText(MulQuizActivity.this, "Correct Answer !", Toast.LENGTH_SHORT).show();
+                        score++;
+                        currentQuesCounter++;
 
-                Log.i(TAG, "onClick: user input = "+etUserInput.getEditableText());
-
-                Log.i(TAG, "onClick: a0 - a1 = "+ (a[0]-a[1]));
-
-                Log.i(TAG, "onClick: a[0] = " + a[0]);
-                Log.i(TAG, "onClick: a[1] = " + a[1]);
-                Toast.makeText(QuizActivity.this, "Correct Answer !", Toast.LENGTH_SHORT).show();
-                score++;
-                currentQuesCounter++;
-
-                Log.i(TAG, "onClick: score = "+score);
-
-                a = setQuestionView(currentQuesCounter);
-                
-                
-            }
-
-
-            keypadNext.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-//                    etUserInput.getText().clear();
-
-                    Log.i(TAG, "onClick: a[0] = "+a[0]);
-                    Log.i(TAG, "onClick: a[1] = "+a[1]);
-
-                    Log.i(TAG, "onClick: user input = "+etUserInput.getEditableText());
-
-
-                    Log.i(TAG, "onClick: clicked ");
-
-                    if (currentQuesCounter < totalQuesCount) {
-
-
-                        if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] - a[1]))) {
-
-                            etUserInput.getText().clear();
-
-
-                            Log.i(TAG, "onClick: user input = "+etUserInput.getEditableText());
-
-                            Log.i(TAG, "onClick: a0 - a1 = "+ (a[0]-a[1]));
-
-                            Log.i(TAG, "onClick: a[0] = " + a[0]);
-                            Log.i(TAG, "onClick: a[1] = " + a[1]);
-                            Toast.makeText(QuizActivity.this, "Correct Answer !", Toast.LENGTH_SHORT).show();
-                            score++;
-                            currentQuesCounter++;
-
-                            Log.i(TAG, "onClick: score = "+score);
+                        Log.i(TAG, "onClick: score = " + score);
 
                         a = setQuestionView(currentQuesCounter);
 
-//                            Intent intent = new Intent(QuizActivity.this, QuizActivity.class);
-//
-//                            intent.putExtra("key_sub", "sub");
-//                            String sCurrentCount = String.valueOf(currentQuesCounter);
-//                            intent.putExtra("current_quest_count", sCurrentCount);
-//
-//                            startActivity(intent);
-
-                        } else {
-
-                            etUserInput.getText().clear();
-
-
-                            Log.i(TAG, "onClick: inside else of incorrect ans ");
-
-                            Toast.makeText(QuizActivity.this, "Incorrect Answer !", Toast.LENGTH_SHORT).show();
-
-                            a = setQuestionView(currentQuesCounter);
-                            currentQuesCounter++;
-
-//                            Intent intent = new Intent(QuizActivity.this, QuizActivity.class);
-//                            intent.putExtra("key_sub", "sub");
-//                            startActivity(intent);
-
-                        }
 
                     } else {
 
-                        if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] - a[1]))) {
-                            Toast.makeText(QuizActivity.this, "Correct Answer!", Toast.LENGTH_SHORT).show();
-                            Toast.makeText(QuizActivity.this, "FINAL SCORE = "+(score+1), Toast.LENGTH_SHORT).show();
-                        }
+                        etUserInput.getText().clear();
 
-                        AlertDialog.Builder builder = new AlertDialog.Builder(QuizActivity.this);
-                        builder.setMessage("FINAL SCORE = "+(score+1)+" on 10")
-                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        finish();
-                                    }
-                                });
 
-                        AlertDialog dialog = builder.create();
-                        dialog.show();
+                        Log.i(TAG, "onClick: inside else of incorrect ans ");
+
+                        Toast.makeText(MulQuizActivity.this, "Incorrect Answer !", Toast.LENGTH_SHORT).show();
+
+                        a = setQuestionView(currentQuesCounter);
+                        currentQuesCounter++;
 
                     }
+                } else {
+
+                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] * a[1]))) {
+                        Toast.makeText(MulQuizActivity.this, "Correct Answer!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MulQuizActivity.this, "FINAL SCORE = "+(score+1), Toast.LENGTH_SHORT).show();
+                    }
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MulQuizActivity.this);
+                    builder.setMessage("FINAL SCORE = "+(score+1)+" on 10")
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    finish();
+                                }
+                            });
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+
+
                 }
-            });
-//        }
-
-            Log.i(TAG, "onCreate: i= "+i);
 
 
-//            Toast.makeText(QuizActivity.this,"Your Final Score is = "+score,Toast.LENGTH_LONG).show();
-            score = 0;
+
+            }
+        });
 
 
 
@@ -224,24 +144,14 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-
-
-        } else if (intent.getStringExtra("key_mul").equals("mul")) {
-            tvOperation.setText("X");
-
-
-
-        } else if (intent.getStringExtra("key_add").equals("add")) {
-            tvOperation.setText("+");
-
-
-
-        }
 
     }
 
+
     @Override
     public void onClick(View view) {
+
+
 
         switch (view.getId()) {
 
@@ -251,17 +161,17 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                 if(currentQuesCounter<totalQuesCount) {
 
-                    if ("1".equals(Integer.toString(a[0] - a[1]))) {
+                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] * a[1]))) {
                         etUserInput.getText().clear();
 
 
                         Log.i(TAG, "onClick: user input = " + etUserInput.getEditableText());
 
-                        Log.i(TAG, "onClick: a0 - a1 = " + (a[0] - a[1]));
+                        Log.i(TAG, "onClick: a0 * a1 = " + (a[0] * a[1]));
 
                         Log.i(TAG, "onClick: a[0] = " + a[0]);
                         Log.i(TAG, "onClick: a[1] = " + a[1]);
-                        Toast.makeText(QuizActivity.this, "Correct Answer !", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MulQuizActivity.this, "Correct Answer !", Toast.LENGTH_SHORT).show();
                         score++;
                         currentQuesCounter++;
 
@@ -271,12 +181,12 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                     }
                 } else {
-                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] - a[1]))) {
-                        Toast.makeText(QuizActivity.this, "Correct Answer!", Toast.LENGTH_SHORT).show();
-                        Toast.makeText(QuizActivity.this, "FINAL SCORE = "+(score+1), Toast.LENGTH_SHORT).show();
+                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] * a[1]))) {
+                        Toast.makeText(MulQuizActivity.this, "Correct Answer!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MulQuizActivity.this, "FINAL SCORE = "+(score+1), Toast.LENGTH_SHORT).show();
                     }
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(QuizActivity.this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MulQuizActivity.this);
                     builder.setMessage("FINAL SCORE = "+(score+1)+" on 10")
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
@@ -300,7 +210,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                 if(currentQuesCounter<totalQuesCount) {
 
 
-                    if ("2".equals(Integer.toString(a[0] - a[1]))) {
+                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] * a[1]))) {
                         etUserInput.getText().clear();
 
 
@@ -310,7 +220,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                         Log.i(TAG, "onClick: a[0] = " + a[0]);
                         Log.i(TAG, "onClick: a[1] = " + a[1]);
-                        Toast.makeText(QuizActivity.this, "Correct Answer !", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MulQuizActivity.this, "Correct Answer !", Toast.LENGTH_SHORT).show();
                         score++;
                         currentQuesCounter++;
 
@@ -320,12 +230,12 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                     }
                 } else {
-                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] - a[1]))) {
-                        Toast.makeText(QuizActivity.this, "Correct Answer!", Toast.LENGTH_SHORT).show();
-                        Toast.makeText(QuizActivity.this, "FINAL SCORE = "+(score+1), Toast.LENGTH_SHORT).show();
+                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] * a[1]))) {
+                        Toast.makeText(MulQuizActivity.this, "Correct Answer!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MulQuizActivity.this, "FINAL SCORE = "+(score+1), Toast.LENGTH_SHORT).show();
                     }
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(QuizActivity.this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MulQuizActivity.this);
                     builder.setMessage("FINAL SCORE = "+(score+1)+" on 10")
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
@@ -350,7 +260,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                 if(currentQuesCounter<totalQuesCount) {
 
 
-                    if ("3".equals(Integer.toString(a[0] - a[1]))) {
+                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] * a[1]))) {
                         etUserInput.getText().clear();
 
 
@@ -360,7 +270,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                         Log.i(TAG, "onClick: a[0] = " + a[0]);
                         Log.i(TAG, "onClick: a[1] = " + a[1]);
-                        Toast.makeText(QuizActivity.this, "Correct Answer !", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MulQuizActivity.this, "Correct Answer !", Toast.LENGTH_SHORT).show();
                         score++;
                         currentQuesCounter++;
 
@@ -370,11 +280,12 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                     }
                 } else {
-                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] - a[1]))) {
-                        Toast.makeText(QuizActivity.this, "Correct Answer!", Toast.LENGTH_SHORT).show();
-                        Toast.makeText(QuizActivity.this, "FINAL SCORE = "+(score+1), Toast.LENGTH_SHORT).show();
+                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] * a[1]))) {
+                        Toast.makeText(MulQuizActivity.this, "Correct Answer!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MulQuizActivity.this, "FINAL SCORE = "+(score+1), Toast.LENGTH_SHORT).show();
                     }
-                    AlertDialog.Builder builder = new AlertDialog.Builder(QuizActivity.this);
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MulQuizActivity.this);
                     builder.setMessage("FINAL SCORE = "+(score+1)+" on 10")
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
@@ -385,6 +296,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                     AlertDialog dialog = builder.create();
                     dialog.show();
+
 
 //                    finish();
                 }
@@ -397,7 +309,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                 if(currentQuesCounter<totalQuesCount) {
 
 
-                    if ("4".equals(Integer.toString(a[0] - a[1]))) {
+                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] * a[1]))) {
                         etUserInput.getText().clear();
 
 
@@ -407,7 +319,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                         Log.i(TAG, "onClick: a[0] = " + a[0]);
                         Log.i(TAG, "onClick: a[1] = " + a[1]);
-                        Toast.makeText(QuizActivity.this, "Correct Answer !", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MulQuizActivity.this, "Correct Answer !", Toast.LENGTH_SHORT).show();
                         score++;
                         currentQuesCounter++;
 
@@ -417,11 +329,12 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                     }
                 } else {
-                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] - a[1]))) {
-                        Toast.makeText(QuizActivity.this, "Correct Answer!", Toast.LENGTH_SHORT).show();
-                        Toast.makeText(QuizActivity.this, "FINAL SCORE = "+(score+1), Toast.LENGTH_SHORT).show();
+                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] * a[1]))) {
+                        Toast.makeText(MulQuizActivity.this, "Correct Answer!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MulQuizActivity.this, "FINAL SCORE = "+(score+1), Toast.LENGTH_SHORT).show();
                     }
-                    AlertDialog.Builder builder = new AlertDialog.Builder(QuizActivity.this);
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MulQuizActivity.this);
                     builder.setMessage("FINAL SCORE = "+(score+1)+" on 10")
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
@@ -432,6 +345,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                     AlertDialog dialog = builder.create();
                     dialog.show();
+
 
 //                    finish();
                 }
@@ -444,7 +358,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                 if(currentQuesCounter<totalQuesCount) {
 
 
-                    if ("5".equals(Integer.toString(a[0] - a[1]))) {
+                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] * a[1]))) {
                         etUserInput.getText().clear();
 
 
@@ -454,7 +368,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                         Log.i(TAG, "onClick: a[0] = " + a[0]);
                         Log.i(TAG, "onClick: a[1] = " + a[1]);
-                        Toast.makeText(QuizActivity.this, "Correct Answer !", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MulQuizActivity.this, "Correct Answer !", Toast.LENGTH_SHORT).show();
                         score++;
                         currentQuesCounter++;
 
@@ -464,12 +378,12 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                     }
                 } else {
-                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] - a[1]))) {
-                        Toast.makeText(QuizActivity.this, "Correct Answer!", Toast.LENGTH_SHORT).show();
-                        Toast.makeText(QuizActivity.this, "FINAL SCORE = "+(score+1), Toast.LENGTH_SHORT).show();
+                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] * a[1]))) {
+                        Toast.makeText(MulQuizActivity.this, "Correct Answer!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MulQuizActivity.this, "FINAL SCORE = "+(score+1), Toast.LENGTH_SHORT).show();
                     }
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(QuizActivity.this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MulQuizActivity.this);
                     builder.setMessage("FINAL SCORE = "+(score+1)+" on 10")
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
@@ -480,6 +394,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                     AlertDialog dialog = builder.create();
                     dialog.show();
+
 
 //                    finish();
                 }
@@ -490,7 +405,8 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                 if(currentQuesCounter<totalQuesCount) {
 
-                    if ("6".equals(Integer.toString(a[0] - a[1]))) {
+
+                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] * a[1]))) {
                         etUserInput.getText().clear();
 
 
@@ -500,7 +416,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                         Log.i(TAG, "onClick: a[0] = " + a[0]);
                         Log.i(TAG, "onClick: a[1] = " + a[1]);
-                        Toast.makeText(QuizActivity.this, "Correct Answer !", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MulQuizActivity.this, "Correct Answer !", Toast.LENGTH_SHORT).show();
                         score++;
                         currentQuesCounter++;
 
@@ -510,12 +426,12 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                     }
                 } else {
-                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] - a[1]))) {
-                        Toast.makeText(QuizActivity.this, "Correct Answer!", Toast.LENGTH_SHORT).show();
-                        Toast.makeText(QuizActivity.this, "FINAL SCORE = "+(score+1), Toast.LENGTH_SHORT).show();
+                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] * a[1]))) {
+                        Toast.makeText(MulQuizActivity.this, "Correct Answer!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MulQuizActivity.this, "FINAL SCORE = "+(score+1), Toast.LENGTH_SHORT).show();
                     }
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(QuizActivity.this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MulQuizActivity.this);
                     builder.setMessage("FINAL SCORE = "+(score+1)+" on 10")
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
@@ -526,6 +442,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                     AlertDialog dialog = builder.create();
                     dialog.show();
+
 
 //                    finish();
                 }
@@ -538,7 +455,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                 if(currentQuesCounter<totalQuesCount) {
 
 
-                    if ("7".equals(Integer.toString(a[0] - a[1]))) {
+                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] * a[1]))) {
                         etUserInput.getText().clear();
 
 
@@ -548,7 +465,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                         Log.i(TAG, "onClick: a[0] = " + a[0]);
                         Log.i(TAG, "onClick: a[1] = " + a[1]);
-                        Toast.makeText(QuizActivity.this, "Correct Answer !", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MulQuizActivity.this, "Correct Answer !", Toast.LENGTH_SHORT).show();
                         score++;
                         currentQuesCounter++;
 
@@ -558,12 +475,12 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                     }
                 } else {
-                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] - a[1]))) {
-                        Toast.makeText(QuizActivity.this, "Correct Answer!", Toast.LENGTH_SHORT).show();
-                        Toast.makeText(QuizActivity.this, "FINAL SCORE = "+(score+1), Toast.LENGTH_SHORT).show();
+                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] * a[1]))) {
+                        Toast.makeText(MulQuizActivity.this, "Correct Answer!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MulQuizActivity.this, "FINAL SCORE = "+(score+1), Toast.LENGTH_SHORT).show();
                     }
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(QuizActivity.this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MulQuizActivity.this);
                     builder.setMessage("FINAL SCORE = "+(score+1)+" on 10")
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
@@ -575,6 +492,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                     AlertDialog dialog = builder.create();
                     dialog.show();
 
+
 //                    finish();
                 }
                 break;
@@ -584,7 +502,8 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                 if(currentQuesCounter<totalQuesCount) {
 
-                    if ("8".equals(Integer.toString(a[0] - a[1]))) {
+
+                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] * a[1]))) {
                         etUserInput.getText().clear();
 
 
@@ -594,7 +513,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                         Log.i(TAG, "onClick: a[0] = " + a[0]);
                         Log.i(TAG, "onClick: a[1] = " + a[1]);
-                        Toast.makeText(QuizActivity.this, "Correct Answer !", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MulQuizActivity.this, "Correct Answer !", Toast.LENGTH_SHORT).show();
                         score++;
                         currentQuesCounter++;
 
@@ -604,12 +523,12 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                     }
                 } else {
-                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] - a[1]))) {
-                        Toast.makeText(QuizActivity.this, "Correct Answer!", Toast.LENGTH_SHORT).show();
-                        Toast.makeText(QuizActivity.this, "FINAL SCORE = "+(score+1), Toast.LENGTH_SHORT).show();
+                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] * a[1]))) {
+                        Toast.makeText(MulQuizActivity.this, "Correct Answer!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MulQuizActivity.this, "FINAL SCORE = "+(score+1), Toast.LENGTH_SHORT).show();
                     }
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(QuizActivity.this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MulQuizActivity.this);
                     builder.setMessage("FINAL SCORE = "+(score+1)+" on 10")
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
@@ -631,7 +550,8 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                 if(currentQuesCounter<totalQuesCount) {
 
-                    if ("9".equals(Integer.toString(a[0] - a[1]))) {
+
+                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] * a[1]))) {
                         etUserInput.getText().clear();
 
 
@@ -641,7 +561,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                         Log.i(TAG, "onClick: a[0] = " + a[0]);
                         Log.i(TAG, "onClick: a[1] = " + a[1]);
-                        Toast.makeText(QuizActivity.this, "Correct Answer !", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MulQuizActivity.this, "Correct Answer !", Toast.LENGTH_SHORT).show();
                         score++;
                         currentQuesCounter++;
 
@@ -651,12 +571,12 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                     }
                 } else {
-                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] - a[1]))) {
-                        Toast.makeText(QuizActivity.this, "Correct Answer!", Toast.LENGTH_SHORT).show();
-                        Toast.makeText(QuizActivity.this, "FINAL SCORE = "+(score+1), Toast.LENGTH_SHORT).show();
+                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] * a[1]))) {
+                        Toast.makeText(MulQuizActivity.this, "Correct Answer!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MulQuizActivity.this, "FINAL SCORE = "+(score+1), Toast.LENGTH_SHORT).show();
                     }
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(QuizActivity.this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MulQuizActivity.this);
                     builder.setMessage("FINAL SCORE = "+(score+1)+" on 10")
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
@@ -667,6 +587,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                     AlertDialog dialog = builder.create();
                     dialog.show();
+
 
 //                    finish();
                 }
@@ -677,7 +598,8 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                 if(currentQuesCounter<totalQuesCount) {
 
-                    if ("0".equals(Integer.toString(a[0] - a[1]))) {
+
+                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] * a[1]))) {
                         etUserInput.getText().clear();
 
 
@@ -687,7 +609,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                         Log.i(TAG, "onClick: a[0] = " + a[0]);
                         Log.i(TAG, "onClick: a[1] = " + a[1]);
-                        Toast.makeText(QuizActivity.this, "Correct Answer !", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MulQuizActivity.this, "Correct Answer !", Toast.LENGTH_SHORT).show();
                         score++;
                         currentQuesCounter++;
 
@@ -697,12 +619,12 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
                     }
                 } else {
-                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] - a[1]))) {
-                        Toast.makeText(QuizActivity.this, "Correct Answer!", Toast.LENGTH_SHORT).show();
-                        Toast.makeText(QuizActivity.this, "FINAL SCORE = "+(score+1), Toast.LENGTH_SHORT).show();
+                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] * a[1]))) {
+                        Toast.makeText(MulQuizActivity.this, "Correct Answer!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MulQuizActivity.this, "FINAL SCORE = "+(score+1), Toast.LENGTH_SHORT).show();
                     }
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(QuizActivity.this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MulQuizActivity.this);
                     builder.setMessage("FINAL SCORE = "+(score+1)+" on 10")
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
@@ -714,9 +636,14 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                     AlertDialog dialog = builder.create();
                     dialog.show();
 
+
 //                    finish();
                 }
                 break;
+
+//            case R.id.keypad_clear:
+//                etUserInput.getEditableText().clear();
+//                break;
 
 
 
@@ -725,7 +652,40 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
         }
 
+    }
 
+
+    public void setViews() {
+
+        tvCurrentQno = (TextView) findViewById(R.id.current_quest_no);
+        tvNum1 = (TextView) findViewById(R.id.number_1);
+        tvNum2 = (TextView) findViewById(R.id.number_2);
+        tvOperation = (TextView) findViewById(R.id.operation);
+        etUserInput = (EditText) findViewById(R.id.result);
+
+        keypadNext = (Button) findViewById(R.id.keypad_next);
+        keypadClear = (Button) findViewById(R.id.keypad_clear);
+        key1 = (Button) findViewById(R.id.keypad_1);
+        key2 = (Button) findViewById(R.id.keypad_2);
+        key3 = (Button) findViewById(R.id.keypad_3);
+        key4 = (Button) findViewById(R.id.keypad_4);
+        key5 = (Button) findViewById(R.id.keypad_5);
+        key6 = (Button) findViewById(R.id.keypad_6);
+        key7 = (Button) findViewById(R.id.keypad_7);
+        key8 = (Button) findViewById(R.id.keypad_8);
+        key9 = (Button) findViewById(R.id.keypad_9);
+        key0 = (Button) findViewById(R.id.keypad_0);
+
+        key1.setOnClickListener(this);
+        key2.setOnClickListener(this);
+        key3.setOnClickListener(this);
+        key4.setOnClickListener(this);
+        key5.setOnClickListener(this);
+        key6.setOnClickListener(this);
+        key7.setOnClickListener(this);
+        key8.setOnClickListener(this);
+        key9.setOnClickListener(this);
+        key0.setOnClickListener(this);
 
     }
 
@@ -734,8 +694,8 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         int max = 9;
         int min = 0;
 
-        num2 = (int) (Math.random() * (max - min) + min ); // num1>num2
-        num1 = (int) (Math.random() * (max - num2) + num2 );
+        num2 = (int) (Math.random() * (max - min) + min );
+        num1 = (int) (Math.random() * (max - min) + min );
 
         int[] a={num1,num2};
 
@@ -772,35 +732,4 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    public void setViews() {
-
-        tvCurrentQno = (TextView) findViewById(R.id.current_quest_no);
-        tvNum1 = (TextView) findViewById(R.id.number_1);
-        tvNum2 = (TextView) findViewById(R.id.number_2);
-        tvOperation = (TextView) findViewById(R.id.operation);
-        etUserInput = (EditText) findViewById(R.id.result);
-
-        keypadNext = (Button) findViewById(R.id.keypad_next);
-        key1 = (Button) findViewById(R.id.keypad_1);
-        key2 = (Button) findViewById(R.id.keypad_2);
-        key3 = (Button) findViewById(R.id.keypad_3);
-        key4 = (Button) findViewById(R.id.keypad_4);
-        key5 = (Button) findViewById(R.id.keypad_5);
-        key6 = (Button) findViewById(R.id.keypad_6);
-        key7 = (Button) findViewById(R.id.keypad_7);
-        key8 = (Button) findViewById(R.id.keypad_8);
-        key9 = (Button) findViewById(R.id.keypad_9);
-        key0 = (Button) findViewById(R.id.keypad_0);
-
-        key1.setOnClickListener(this);
-        key2.setOnClickListener(this);
-        key3.setOnClickListener(this);
-        key4.setOnClickListener(this);
-        key5.setOnClickListener(this);
-        key6.setOnClickListener(this);
-        key7.setOnClickListener(this);
-        key8.setOnClickListener(this);
-        key9.setOnClickListener(this);
-        key0.setOnClickListener(this);
-    }
 }

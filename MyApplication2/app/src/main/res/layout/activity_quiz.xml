@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:text="num1"
         android:layout_marginTop="30dp"
-        android:layout_gravity="center"
+        android:layout_marginLeft="186dp"
         android:textStyle="bold"
         android:textSize="30sp"
         />
@@ -96,7 +96,7 @@
         android:layout_gravity="center"
         android:textStyle="bold"
         android:textSize="30sp"
-        android:hint="10"
+        android:hint=""
         android:textColor="@android:color/holo_blue_light"
         />
 
@@ -148,6 +148,8 @@
             android:text="9"
             />
         <Button
+            android:id="@+id/keypad_clear"
+            android:text=""
             />
         <Button
             android:id="@+id/keypad_0"

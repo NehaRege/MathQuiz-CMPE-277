@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent addIntent = new Intent(MainActivity.this, QuizActivity.class);
-                addIntent.putExtra(getString(R.string.Key_add), "add");
+                Intent addIntent = new Intent(MainActivity.this, AddQuizActivity.class);
+                addIntent.putExtra("key_add", "add");
                 startActivity(addIntent);
 
             }
@@ -48,8 +48,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent mulIntent = new Intent(MainActivity.this,QuizActivity.class);
-                mulIntent.putExtra(getString(R.string.key_mul),"mul");
+                Intent mulIntent = new Intent(MainActivity.this,MulQuizActivity.class);
+                mulIntent.putExtra("key_mul","mul");
                 startActivity(mulIntent);
 
             }

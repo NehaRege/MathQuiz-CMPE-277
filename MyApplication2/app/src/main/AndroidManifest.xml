@@ -18,6 +18,10 @@
 
         <activity android:name=".QuizActivity"/>
 
+        <activity android:name=".AddQuizActivity"/>
+
+        <activity android:name=".MulQuizActivity"/>
+
         <service android:name=".SimpleIME"
             android:label="@string/simple_ime"
             android:permission="android.permission.BIND_INPUT_METHOD"
