@@ -178,9 +178,9 @@ public class SubQuizActivity extends AppCompatActivity implements View.OnClickLi
                                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
-                                        Intent intent = new Intent(SubQuizActivity.this,MainActivity.class);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                        startActivity(intent);
+                                        Intent intent = new Intent();
+                                        intent.putExtra("score",score);
+                                        setResult(RESULT_OK,intent);
                                         finish();
                                     }
                                 });
@@ -304,9 +304,9 @@ public class SubQuizActivity extends AppCompatActivity implements View.OnClickLi
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    Intent intent = new Intent(SubQuizActivity.this,MainActivity.class);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                    startActivity(intent);
+                                    Intent intent = new Intent();
+                                    intent.putExtra("score",score);
+                                    setResult(RESULT_OK,intent);
                                     finish();
                                 }
                             });
@@ -357,9 +357,9 @@ public class SubQuizActivity extends AppCompatActivity implements View.OnClickLi
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    Intent intent = new Intent(SubQuizActivity.this,MainActivity.class);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                    startActivity(intent);
+                                    Intent intent = new Intent();
+                                    intent.putExtra("score",score);
+                                    setResult(RESULT_OK,intent);
                                     finish();
                                 }
                             });
@@ -410,9 +410,9 @@ public class SubQuizActivity extends AppCompatActivity implements View.OnClickLi
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    Intent intent = new Intent(SubQuizActivity.this,MainActivity.class);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                    startActivity(intent);
+                                    Intent intent = new Intent();
+                                    intent.putExtra("score",score);
+                                    setResult(RESULT_OK,intent);
                                     finish();
                                 }
                             });
@@ -461,9 +461,9 @@ public class SubQuizActivity extends AppCompatActivity implements View.OnClickLi
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    Intent intent = new Intent(SubQuizActivity.this,MainActivity.class);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                    startActivity(intent);
+                                    Intent intent = new Intent();
+                                    intent.putExtra("score",score);
+                                    setResult(RESULT_OK,intent);
                                     finish();
                                 }
                             });
@@ -513,9 +513,9 @@ public class SubQuizActivity extends AppCompatActivity implements View.OnClickLi
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    Intent intent = new Intent(SubQuizActivity.this,MainActivity.class);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                    startActivity(intent);
+                                    Intent intent = new Intent();
+                                    intent.putExtra("score",score);
+                                    setResult(RESULT_OK,intent);
                                     finish();
                                 }
                             });
@@ -563,9 +563,9 @@ public class SubQuizActivity extends AppCompatActivity implements View.OnClickLi
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    Intent intent = new Intent(SubQuizActivity.this,MainActivity.class);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                    startActivity(intent);
+                                    Intent intent = new Intent();
+                                    intent.putExtra("score",score);
+                                    setResult(RESULT_OK,intent);
                                     finish();
                                 }
                             });
@@ -615,9 +615,9 @@ public class SubQuizActivity extends AppCompatActivity implements View.OnClickLi
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    Intent intent = new Intent(SubQuizActivity.this,MainActivity.class);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                    startActivity(intent);
+                                    Intent intent = new Intent();
+                                    intent.putExtra("score",score);
+                                    setResult(RESULT_OK,intent);
                                     finish();
                                 }
                             });
@@ -665,9 +665,9 @@ public class SubQuizActivity extends AppCompatActivity implements View.OnClickLi
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    Intent intent = new Intent(SubQuizActivity.this,MainActivity.class);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                    startActivity(intent);
+                                    Intent intent = new Intent();
+                                    intent.putExtra("score",score);
+                                    setResult(RESULT_OK,intent);
                                     finish();
                                 }
                             });
@@ -716,9 +716,9 @@ public class SubQuizActivity extends AppCompatActivity implements View.OnClickLi
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    Intent intent = new Intent(SubQuizActivity.this,MainActivity.class);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                    startActivity(intent);
+                                    Intent intent = new Intent();
+                                    intent.putExtra("score",score);
+                                    setResult(RESULT_OK,intent);
                                     finish();
                                 }
                             });
@@ -766,9 +766,9 @@ public class SubQuizActivity extends AppCompatActivity implements View.OnClickLi
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    Intent intent = new Intent(SubQuizActivity.this,MainActivity.class);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                    startActivity(intent);
+                                    Intent intent = new Intent();
+                                    intent.putExtra("score",score);
+                                    setResult(RESULT_OK,intent);
                                     finish();
                                 }
                             });
@@ -929,9 +929,10 @@ public class SubQuizActivity extends AppCompatActivity implements View.OnClickLi
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
 
-                                Intent intent = new Intent(SubQuizActivity.this,MainActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                startActivity(intent);
+                                Intent intent = new Intent();
+                                intent.putExtra("score",score);
+                                setResult(RESULT_OK,intent);
+
                                 finish();
                             }
                         });

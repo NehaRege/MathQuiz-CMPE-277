@@ -2,8 +2,9 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/black"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
 <LinearLayout
     android:layout_width="match_parent"
@@ -11,12 +12,24 @@
     android:orientation="vertical"
     tools:context="com.test.myapplication.MainActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_message_main_screen"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:layout_margin="25dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        />
+
     <Button
         android:id="@+id/add_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/addition_button"
-        android:layout_margin="20dp"
+        android:layout_margin="15dp"
+        android:background="@android:color/holo_green_light"
 
         />
 
@@ -25,7 +38,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/subtraction_button"
-        android:layout_margin="20dp"
+        android:layout_margin="15dp"
+        android:background="@android:color/holo_green_light"
+
 
         />
 
@@ -34,7 +49,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/production_button"
-        android:layout_margin="20dp"
+        android:layout_margin="15dp"
+        android:background="@android:color/holo_green_light"
+
 
         />
 

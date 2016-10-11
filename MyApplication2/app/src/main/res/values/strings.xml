@@ -13,5 +13,6 @@
 
     <string name="simple_ime">Simple IME</string>
     <string name="subtype_en_US">English (US)</string>
+    <string name="welcome_message_main_screen">Please select one of the options to start the quiz!</string>
 
 </resources>

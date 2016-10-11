@@ -76,7 +76,7 @@ public class MulQuizActivity extends AppCompatActivity implements View.OnClickLi
         setViews();
 
 
-        tvOperation.setText("X");
+        tvOperation.setText("x");
 
         currentQuesCounter++;
         a = setQuestionView(currentQuesCounter);
@@ -799,31 +799,39 @@ public class MulQuizActivity extends AppCompatActivity implements View.OnClickLi
                 if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] * a[1]))) {
                     etUserInput.getText().clear();
 
-                    final Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
+//                    final Handler handler = new Handler();
+//                    handler.postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
+//
+//                            Toast.makeText(MulQuizActivity.this, "Correct Answer !", Toast.LENGTH_SHORT).show();
+//                            score++;
+//                            currentQuesCounter++;
+//
+//
+//                        }
+//                    }, 9000);
 
-                            Toast.makeText(MulQuizActivity.this, "Correct Answer !", Toast.LENGTH_SHORT).show();
-                            score++;
-                            currentQuesCounter++;
-
-
-                        }
-                    }, 9000);
+                    Toast.makeText(MulQuizActivity.this, "Correct Answer !", Toast.LENGTH_SHORT).show();
+                    score++;
+                    currentQuesCounter++;
 
                     a = setQuestionView(currentQuesCounter);
 
                 } else {
 
-                    final Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            etUserInput.getText().clear();
-                            Toast.makeText(MulQuizActivity.this, "Incorrect Answer !", Toast.LENGTH_SHORT).show();
-                        }
-                    },9000);
+//                    final Handler handler = new Handler();
+//                    handler.postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            etUserInput.getText().clear();
+//                            Toast.makeText(MulQuizActivity.this, "Incorrect Answer !", Toast.LENGTH_SHORT).show();
+//                        }
+//                    },9000);
+
+
+                    etUserInput.getText().clear();
+                    Toast.makeText(MulQuizActivity.this, "Incorrect Answer !", Toast.LENGTH_SHORT).show();
 
                     currentQuesCounter++;
 
@@ -845,6 +853,11 @@ public class MulQuizActivity extends AppCompatActivity implements View.OnClickLi
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
+
+                                Intent intent = new Intent();
+                                intent.putExtra("score",score);
+                                setResult(RESULT_OK,intent);
+
                                 finish();
                             }
                         });

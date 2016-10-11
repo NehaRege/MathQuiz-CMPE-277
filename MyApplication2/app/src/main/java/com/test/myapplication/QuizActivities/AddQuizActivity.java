@@ -24,6 +24,8 @@ import com.test.myapplication.R;
  */
 public class AddQuizActivity extends AppCompatActivity implements View.OnClickListener {
 
+    // This activity is not used in this application. This is just kept as a back up !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
     private Button keypadNext;
     private Button keypadClear;
     private Button key1;
@@ -80,14 +82,6 @@ public class AddQuizActivity extends AppCompatActivity implements View.OnClickLi
         tvCurrentQno.setText(String.valueOf("0"));
 
         a = setQuestionView(currentQuesCounter);
-
-
-//        Timer timer = new Timer(5000,1000);
-//        timer.start();
-
-//        countdowntimer = new CountDownTimerClass(10000, 1000);
-//
-//        countdowntimer.start();
 
 
 
@@ -151,38 +145,6 @@ public class AddQuizActivity extends AppCompatActivity implements View.OnClickLi
                     }
                 } else {
 
-//                    final Handler handler = new Handler();
-//                    handler.postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//
-//                            if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] + a[1]))) {
-//                                Toast.makeText(AddQuizActivity.this, "Correct Answer!", Toast.LENGTH_SHORT).show();
-//                                Toast.makeText(AddQuizActivity.this, "FINAL SCORE = "+(score+1), Toast.LENGTH_SHORT).show();
-//                            }
-//
-//                        }
-//                    },8000);
-
-//                    if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] + a[1]))) {
-//                        Toast.makeText(AddQuizActivity.this, "Correct Answer!", Toast.LENGTH_SHORT).show();
-//                        Toast.makeText(AddQuizActivity.this, "FINAL SCORE = "+(score+1), Toast.LENGTH_SHORT).show();
-//                    }
-
-
-//                    AlertDialog.Builder builder = new AlertDialog.Builder(AddQuizActivity.this);
-//                    builder.setMessage("FINAL SCORE = "+(score+1)+" on 10")
-//                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//                                @Override
-//                                public void onClick(DialogInterface dialogInterface, int i) {
-//
-//
-//
-//                                    finish();
-//                                }
-//                            });
-//                    AlertDialog dialog = builder.create();
-//                    dialog.show();
 
 
                     final Handler handler = new Handler();
@@ -210,18 +172,6 @@ public class AddQuizActivity extends AppCompatActivity implements View.OnClickLi
 
 
 
-//                    final Handler handler = new Handler();
-//                    handler.postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//
-//                            if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] + a[1]))) {
-//                                Toast.makeText(AddQuizActivity.this, "Correct Answer!", Toast.LENGTH_SHORT).show();
-//                                Toast.makeText(AddQuizActivity.this, "FINAL SCORE = "+(score+1), Toast.LENGTH_SHORT).show();
-//                            }
-//
-//                        }
-//                    },8000);
 
 
                     if (etUserInput.getEditableText().toString().equals(Integer.toString(a[0] + a[1]))) {

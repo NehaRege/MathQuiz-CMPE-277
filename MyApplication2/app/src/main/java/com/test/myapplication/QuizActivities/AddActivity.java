@@ -849,6 +849,11 @@ public class AddActivity extends AppCompatActivity implements View.OnClickListen
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
+
+                                Intent intent = new Intent();
+                                intent.putExtra("score",score);
+                                setResult(RESULT_OK,intent);
+
                                 finish();
                             }
                         });
