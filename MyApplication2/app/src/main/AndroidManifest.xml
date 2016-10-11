@@ -8,7 +8,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:configChanges=
+                "orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -16,21 +19,52 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".QuizActivity"/>
+        <activity
+            android:name=".QuizActivities.SubQuizActivity"
+            android:parentActivityName=".MainActivity"
+            android:configChanges=
+                "orientation|screenSize">
 
-        <activity android:name=".AddQuizActivity"/>
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
 
-        <activity android:name=".MulQuizActivity"/>
 
-        <service android:name=".SimpleIME"
-            android:label="@string/simple_ime"
-            android:permission="android.permission.BIND_INPUT_METHOD"
-            >
-            <meta-data android:name="android.view.im" android:resource="@xml/method"/>
-            <intent-filter>
-                <action android:name="android.view.InputMethod" />
-            </intent-filter>
-        </service>
+        <activity
+            android:name=".QuizActivities.AddQuizActivity"
+            android:parentActivityName=".MainActivity"
+            android:configChanges="orientation|screenSize">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+    </activity>
+
+    <activity
+            android:name=".QuizActivities.MulQuizActivity"
+            android:parentActivityName=".MainActivity"
+            android:configChanges=
+            "orientation|screenSize">
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".MainActivity"/>
+
+    </activity>
+
+        <activity
+            android:name=".QuizActivities.AddActivity"
+            android:parentActivityName=".MainActivity"
+            android:configChanges=
+                "orientation|screenSize">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+
+        </activity>
+
 
     </application>
 
