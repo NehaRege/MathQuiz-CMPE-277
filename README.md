@@ -6,6 +6,7 @@ An interactive Android timer based math quiz application for addition, subtracti
 <br> 
 </br>
 
-![ScreenShot](https://github.com/NehaRege/MathQuiz_Android/blob/master/Screenshot_20161010-231245.png "Optional title")  ![](https://github.com/NehaRege/MathQuiz_Android/blob/master/Screenshot_20161010-231331.png =800x800)  ![ScreenShot](https://github.com/NehaRege/MathQuiz_Android/blob/master/Screenshot_20161010-231546.png "Optional title")  ![Alt text](https://github.com/NehaRege/MathQuiz_Android/blob/master/Screenshot_20161010-231755.png "Optional title")  ![Alt text](https://github.com/NehaRege/MathQuiz_Android/blob/master/Screenshot_20161010-231816.png "Optional title")
+![ScreenShot](https://github.com/NehaRege/MathQuiz_Android/blob/master/Screenshot_20161010-231245.png "Optional title")  ![ScreenShot](https://github.com/NehaRege/MathQuiz_Android/blob/master/Screenshot_20161010-231331.png =800x800)  ![ScreenShot](https://github.com/NehaRege/MathQuiz_Android/blob/master/Screenshot_20161010-231546.png "Optional title")  ![Alt text](https://github.com/NehaRege/MathQuiz_Android/blob/master/Screenshot_20161010-231755.png "Optional title")  ![Alt text](https://github.com/NehaRege/MathQuiz_Android/blob/master/Screenshot_20161010-231816.png "Optional title")
+<img src="https://camo.githubusercontent.com/..." data-canonical-src="https://github.com/NehaRege/MathQuiz_Android/blob/master/Screenshot_20161010-231816.png" width="200" height="400" />
 
 
